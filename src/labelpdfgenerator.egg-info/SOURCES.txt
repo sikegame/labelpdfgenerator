@@ -1,9 +1,0 @@
-setup.py
-labelpdfgenerator/__init__.py
-labelpdfgenerator/__main__.py
-labelpdfgenerator/generator.py
-labelpdfgenerator/labels.py
-labelpdfgenerator.egg-info/PKG-INFO
-labelpdfgenerator.egg-info/SOURCES.txt
-labelpdfgenerator.egg-info/dependency_links.txt
-labelpdfgenerator.egg-info/top_level.txt
