@@ -12,5 +12,5 @@ setup(
     },
     license="MIT",
     packages=["labelpdfgenerator"],
-    install_requires=["qrcode==7.3.1", "fpdf==1.7.2", "Pillow==9.1.1"],
+    install_requires=["qrcode", "fpdf", "Pillow"],
 )
