@@ -11,11 +11,26 @@
 # * Ported to Python 2.6 by jredrejo (jredrejo@debian.org)   September-2011    *
 # *****************************************************************************/
 from turtle import width
+from typing import TypedDict
 
 from fpdf import FPDF
 
+class LabelFormat(TypedDict):
+    "paper-size": str
+    "metric": str
+    "marginLeft": float
+    "marginTop": float
+    "NX": int
+    "NY": int
+    "SpaceX": float
+    "SpaceY": float
+    "width": float
+    "height": float
+    "fontSize": float
+
+
 # List of label formats:
-commercial_labels = {
+commercial_labels: dict[str, LabelFormat] = {
     "Avery-5160": {
         "paper-size": "letter",
         "metric": "mm",
@@ -133,6 +148,32 @@ commercial_labels = {
         "height": 35,
         "font-size": 9,
     },
+    "Custom-A4": {
+        "paper-size": "A4",
+        "metric": "mm",
+        "marginLeft": 8.5,
+        "marginTop": 8.5,
+        "NX": 7,
+        "NY": 10,
+        "SpaceX": 0,
+        "SpaceY": 0,
+        "width": 28,
+        "height": 28,
+        "font-size": 9,
+    },
+    "Custom-A3": {
+        "paper-size": "A3",
+        "metric": "mm",
+        "marginLeft": 8.5,
+        "marginTop": 8.5,
+        "NX": 10,
+        "NY": 14,
+        "SpaceX": 0,
+        "SpaceY": 0,
+        "width": 28,
+        "height": 28,
+        "font-size": 9,
+    },
 }
 
 
@@ -156,12 +197,14 @@ class PDFLabel(FPDF):
         else:
             raise NameError("Invalid font size: %s" % str(pt))
 
-    def __init__(self, format, unit="mm", posX=1, posY=1):
+    def __init__(self, format: str | LabelFormat, unit="mm", posX=1, posY=1):
         if isinstance(format, str):
             if format in commercial_labels:
                 type_format = commercial_labels[format]
             else:
                 raise NameError("Model %s is not in the database" % format)
+        elif isinstance(format, LabelFormat):
+            type_format = format
         else:
             type_format = format
 

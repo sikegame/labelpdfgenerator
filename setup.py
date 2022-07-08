@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="labelpdfgenerator",
-    version="0.0.1",
+    version="0.0.2",
     author="Shinsuke Ikegame",
     author_email="jj@digitalnomad.jp",
     description="Label PDF generating wrapper for FPDF",

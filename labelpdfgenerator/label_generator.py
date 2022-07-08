@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from io import BytesIO, StringIO
+from io import StringIO
 from tempfile import NamedTemporaryFile
 
 from labelpdfgenerator.label_utils import PDFLabel
